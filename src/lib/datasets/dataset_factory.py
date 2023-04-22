@@ -12,13 +12,15 @@ from .dataset.pascal import PascalVOC
 from .dataset.kitti import KITTI
 from .dataset.coco_hp import COCOHP
 from .dataset.thu_basketball import THU_Basketball
+from .dataset.thu_basketball_hp import THU_Basketball_HP
 
 dataset_factory = {
     'coco': COCO,
     'pascal': PascalVOC,
     'kitti': KITTI,
     'coco_hp': COCOHP,
-    'thu_basketball': THU_Basketball
+    'thu_basketball': THU_Basketball,
+    'thu_basketball_hp': THU_Basketball_HP
 }
 
 _sample_factory = {
