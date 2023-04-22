@@ -20,7 +20,7 @@ class THU_Basketball(data.Dataset):
     def __init__(self, opt, split):
         super(THU_Basketball, self).__init__()
         self.data_dir = os.path.join(opt.data_dir, 'thu_basketball')
-        self.img_dir = os.path.join(self.data_dir, '{}2017'.format(split))
+        self.img_dir = os.path.join(self.data_dir, 'images', '{}'.format(split))
         if split == 'test':
             self.annot_path = os.path.join(self.data_dir, 'annotations',
                                            '{}.json').format(split)
