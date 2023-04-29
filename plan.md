@@ -1,5 +1,0 @@
-- [ ] 在THU Basketball上通过CenterNet进行多类别检测训练、测试
-  - [ ] 将训练方式改为DDP。其中最主要的部分是改写模型的封装、训练集的划分。还包括模型的存储和加载
-  - [ ] 改写训练流程。改为每`--val_intervals`个epoch在验证集上测试一次，并报告AP等指标。
-- [ ] 在THU Basketball上通过CenterNet进行姿态估计训练、测试
-- [ ] 在THU Basketball上通过CenterNet进行跟踪的训练、测试

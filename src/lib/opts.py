@@ -521,7 +521,7 @@ class opts(object):
             }
             if opt.reg_offset:
                 opt.heads.update({'reg': 2})
-        elif opt.task == 'multi_pose':
+        elif opt.task == 'multi_pose' or opt.task == 'thu_multi_pose':
             # assert opt.dataset in ['coco_hp']
             opt.flip_idx = dataset.flip_idx
             opt.heads = {
@@ -567,6 +567,24 @@ class opts(object):
                     'std': [0.289, 0.274, 0.278],
                     'dataset':
                         'coco_hp',
+                    'num_joints':
+                        17,
+                    'flip_idx':
+                        [
+                            [1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14],
+                            [15, 16]
+                        ]
+                },
+            'thu_multi_pose':
+                {
+                    'default_resolution': [512, 512],
+                    # TODO 这里将类别数设置为1是暂时的，后面将改为3
+                    'num_classes':
+                        1,
+                    'mean': [0.408, 0.447, 0.470],
+                    'std': [0.289, 0.274, 0.278],
+                    'dataset':
+                        'thu_basketball_hp',
                     'num_joints':
                         17,
                     'flip_idx':
