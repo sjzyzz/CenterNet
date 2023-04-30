@@ -22,15 +22,9 @@ class THU_Basketball(data.Dataset):
         self.data_dir = os.path.join(opt.data_dir, 'thu_basketball')
         self.img_dir = os.path.join(self.data_dir, 'images', '{}'.format(split))
         if split == 'test':
-            self.annot_path = os.path.join(self.data_dir, 'annotations',
-                                           '{}.json').format(split)
+            self.annot_path = os.path.join(self.data_dir, 'annotations', 'test.json')
         else:
-            if opt.task == 'exdet':
-                self.annot_path = os.path.join(self.data_dir, 'annotations',
-                                               '{}.json').format(split)
-            else:
-                self.annot_path = os.path.join(self.data_dir, 'annotations',
-                                               '{}.json').format(split)
+            self.annot_path = os.path.join(self.data_dir, 'annotations', 'train_val.json')
         self.max_objs = 128
         self.class_name = ['offense player', 'defense player', 'referee']
         self._valid_ids = [0, 1, 2]

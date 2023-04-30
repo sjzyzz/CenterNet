@@ -29,13 +29,13 @@ class THU_Basketball_HP(data.Dataset):
 
         self.acc_idxs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
         self.data_dir = os.path.join(opt.data_dir, 'thu_basketball')
-        self.img_dir = os.path.join(self.data_dir, 'images', '{}'.format(split))
+        self.img_dir = os.path.join(
+            self.data_dir, 'images', '{}'.format('test' if split == 'test' else 'trainval')
+        )
         if split == 'test':
-            self.annot_path = os.path.join(self.data_dir, 'annotations',
-                                           '{}.json').format(split)
+            self.annot_path = os.path.join(self.data_dir, 'annotations', 'test.json')
         else:
-            self.annot_path = os.path.join(self.data_dir, 'annotations',
-                                           '{}.json').format(split)
+            self.annot_path = os.path.join(self.data_dir, 'annotations', 'trainval.json')
         self.max_objs = 32
         self._data_rng = np.random.RandomState(123)
         self._eig_val = np.array([0.2141788, 0.01817699, 0.00341571], dtype=np.float32)
@@ -54,7 +54,7 @@ class THU_Basketball_HP(data.Dataset):
         self.coco = coco.COCO(self.annot_path)
         image_ids = self.coco.getImgIds()
 
-        if split == 'train':
+        if split == 'trainval':
             self.images = []
             for img_id in image_ids:
                 idxs = self.coco.getAnnIds(imgIds=[img_id])
