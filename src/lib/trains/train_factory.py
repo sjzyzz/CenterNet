@@ -6,6 +6,7 @@ from .ctdet import CtdetTrainer
 from .ddd import DddTrainer
 from .exdet import ExdetTrainer
 from .multi_pose import MultiPoseTrainer
+from .multi_class_pose import MultiClassPoseTrainer
 
 train_factory = {
     'exdet': ExdetTrainer,
@@ -13,4 +14,5 @@ train_factory = {
     'ctdet': CtdetTrainer,
     'multi_pose': MultiPoseTrainer,
     'thu_multi_pose': MultiPoseTrainer,
+    'multi_class_pose': MultiClassPoseTrainer,
 }

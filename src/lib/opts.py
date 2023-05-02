@@ -318,7 +318,10 @@ class opts(object):
             '--rot_weight', type=float, default=1, help='loss weight for orientation.'
         )
         self.parser.add_argument('--peak_thresh', type=float, default=0.2)
-
+        # multiple class loss
+        self.parser.add_argument(
+            '--cls_weight', type=float, default=1, help='loss weight for classification .'
+        )
         # task
         # ctdet
         self.parser.add_argument(
@@ -528,6 +531,21 @@ class opts(object):
                 'hm': opt.num_classes,
                 'wh': 2,
                 'hps': 34
+            }
+            if opt.reg_offset:
+                opt.heads.update({'reg': 2})
+            if opt.hm_hp:
+                opt.heads.update({'hm_hp': 17})
+            if opt.reg_hp_offset:
+                opt.heads.update({'hp_offset': 2})
+        elif opt.task == 'multi_class_pose':
+            # assert opt.dataset in ['coco_hp']
+            opt.flip_idx = dataset.flip_idx
+            opt.heads = {
+                'hm': 1,
+                'wh': 2,
+                'hps': 34,
+                'hm_cls': 3
             }
             if opt.reg_offset:
                 opt.heads.update({'reg': 2})
